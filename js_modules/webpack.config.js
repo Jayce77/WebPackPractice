@@ -16,6 +16,11 @@ const config = {
         use: 'babel-loader',
         //Only apply  babel on js files
         test: /\.js$/
+      },
+      {
+        //Order matters Webpack load from left to right
+        use: ['style-loader', 'css-loader'],
+        test: /\.css/
       }
     ]
   }
