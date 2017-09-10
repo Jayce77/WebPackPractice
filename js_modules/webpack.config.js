@@ -9,7 +9,8 @@ const config = {
     //Uses Node helper path to get absolute path to directory
     //Creates new directroy within called build
     path: path.resolve(__dirname, 'build'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: 'build/'
   },
   module: {
     //Loaders like babel fall under module rules
@@ -30,6 +31,16 @@ const config = {
           use: 'css-loader',
           fallback: 'style-loader'
         })
+      },
+      {
+        test: /\.(jpe?g|png\gif\svg)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: { limit: 40000 }
+          },
+          'image-webpack-loader'
+        ]
       }
     ]
   },
